@@ -1,10 +1,8 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.logging.Logger;
 
 public class CalcTiempo {
-    private static final Logger logger = Logger.getLogger(CalcTiempo.class.getName());
 
     private CalcTiempo() {
     }
@@ -35,6 +33,6 @@ public class CalcTiempo {
 
         String mensaje = String.format("Tiempo transcurrido de la fecha actual:\n%d años,\n%d meses,\n%d semanas,\n%d días,\n%d horas,\n%d minutos,\n%d segundos.", añosTranscurridos, mesesTranscurridos, semanasTranscurridas, díasTranscurridos, horasTranscurridas, minutosTranscurridos, segundosTranscurridos);
 
-        logger.info(mensaje);
+        System.out.println(mensaje);
     }
 }

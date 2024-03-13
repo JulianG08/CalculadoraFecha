@@ -12,12 +12,11 @@ public class Main {
 
         do {
             try {
-                System.out.println("╔════════════════════════════════════════════╗");
-                System.out.println("║    Bienvenido al calculador de fechas      ║");
-                System.out.println("║             (Fechas pasadas)               ║");
-                System.out.println("║    1. Calcular Fecha.                      ║");
-                System.out.println("║    2. Salir.                               ║");
-                System.out.println("╚════════════════════════════════════════════╝");
+                System.out.println("Calculadora de fechas pasadas");
+                System.out.println(" ");
+                System.out.println("1. Ingresar la fecha y calcularla");
+                System.out.println("2. Salir");
+                System.out.println(" ");
                 System.out.println("Digite una opcion: ");
                 opc = scanner.nextInt();
                 scanner.nextLine();
@@ -40,7 +39,7 @@ public class Main {
         } while (opc != 2);
     }
 
-    private static void calcularFecha() throws NumberFormatException {
+    private static void calcularFecha() {
         try {
             System.out.println("Ingrese la fecha del pasado en formato (dia/mes/año): ");
             String fechaString = scanner.nextLine();
@@ -59,6 +58,11 @@ public class Main {
 
             // Creando la fecha del usuario
             LocalDate fechaUsuario = LocalDate.of(anio, mes, dia);
+
+            // Verificar si la fecha ingresada es futura
+            if (fechaUsuario.isAfter(fechaActual)) {
+                throw new IllegalArgumentException("La fecha ingresada es futura.");
+            }
 
             // Calculando la diferencia entre las fechas
             long diferencia = calcularDiferenciaFechas(fechaUsuario, fechaActual);
