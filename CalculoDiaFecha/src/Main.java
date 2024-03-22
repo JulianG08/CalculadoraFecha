@@ -1,3 +1,4 @@
+import java.time.DateTimeException;
 import java.time.LocalDate;
 //import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -53,6 +54,11 @@ public class Main {
             byte mes = Byte.parseByte(partesFecha[1]);
             short anio = Short.parseShort(partesFecha[2]);
 
+            // Verificar si la fecha es válida
+            if (!esFechaValida(dia, mes, anio)) {
+                throw new IllegalArgumentException("La fecha ingresada no es válida.");
+            }
+
             // Obteniendo la fecha actual
             LocalDate fechaActual = LocalDate.now();
 
@@ -72,6 +78,15 @@ public class Main {
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    private static boolean esFechaValida(int dia, int mes, int anio) {
+        try {
+            LocalDate.of(anio, mes, dia);
+            return true;
+        } catch (DateTimeException e) {
+            return false;
         }
     }
 
